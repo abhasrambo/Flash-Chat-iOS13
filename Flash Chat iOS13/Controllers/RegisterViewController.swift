@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RegisterViewController: UIViewController {
 
@@ -14,6 +15,16 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     
     @IBAction func registerPressed(_ sender: UIButton) {
+        if let email = emailTextfield.text, let password = passwordTextfield.text {
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let err = error {
+                    let alert = UIAlertController(title: "Alert", message: "There is some issue. Please Check the information again!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: .none))
+                    self.present(alert, animated: true, completion: nil)
+                    print(err)
+                }
+        }
+        }
     }
     
 }
