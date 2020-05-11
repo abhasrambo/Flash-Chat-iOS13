@@ -18,10 +18,14 @@ class RegisterViewController: UIViewController {
         if let email = emailTextfield.text, let password = passwordTextfield.text {
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                 if let err = error {
-                    let alert = UIAlertController(title: "Alert", message: "There is some issue. Please Check the information again!", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Alert", message: "There is some issue. Please Check the information again! \n Possible issues may be: \n \(err.localizedDescription)", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: .none))
                     self.present(alert, animated: true, completion: nil)
                     print(err)
+                } else {
+                    //if no error in registration navigate to chet view controller
+                    self.performSegue(withIdentifier: "newUserCharScreen", sender: self)
+                    
                 }
         }
         }
