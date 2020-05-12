@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
                     print(err)
                 } else {
                     //if no error in Login navigate to chet view controller
-                    self.performSegue(withIdentifier: "existingUserCharScreen", sender: self)
+                    self.performSegue(withIdentifier: Constants.loginSegue, sender: self)
                     
                 }
                 

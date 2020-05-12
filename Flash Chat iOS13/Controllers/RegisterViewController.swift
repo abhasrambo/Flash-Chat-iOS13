@@ -24,7 +24,7 @@ class RegisterViewController: UIViewController {
                     print(err)
                 } else {
                     //if no error in registration navigate to chet view controller
-                    self.performSegue(withIdentifier: "newUserCharScreen", sender: self)
+                    self.performSegue(withIdentifier: Constants.registerSegue, sender: self)
                     
                 }
         }
